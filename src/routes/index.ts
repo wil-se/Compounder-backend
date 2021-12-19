@@ -1,11 +1,4 @@
 import { Router } from "express";
-import {
-  getMenus,
-  addMenu,
-  updateMenu,
-  deleteMenu,
-  retrieveMenu,
-} from "../controllers/menus";
 
 import {
   getUsers,
@@ -58,13 +51,6 @@ import {
 } from "../controllers/token";
 
 
-const menuRoutes: Router = Router();
-menuRoutes.get("/menu", getMenus);
-menuRoutes.post("/menu", addMenu);
-menuRoutes.put("/menu/:id", updateMenu);
-menuRoutes.delete("/menu/:id", deleteMenu);
-menuRoutes.get("/menu/:id", retrieveMenu);
-
 const userRoutes: Router = Router();
 userRoutes.get("/user", getUsers);
 userRoutes.get("/user/:id", getUserById);
@@ -110,7 +96,6 @@ tokenRoutes.delete("/token/:id", deleteToken);
 
 
 export { 
-  menuRoutes, 
   userRoutes, 
   compounderRoutes, 
   farmRoutes, 
