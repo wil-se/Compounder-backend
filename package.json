@@ -1,0 +1,29 @@
+{
+  "name": "compounder-backend",
+  "version": "1.0.0",
+  "description": "compounder backend",
+  "main": "index.ts",
+  "repository": "git@github.com:wil-se/CompounderBACK.git",
+  "author": "William Sebastiani - ice0x0",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.2.2",
+    "mongoose": "^6.1.2",
+    "sequelize": "^6.12.0-beta.3",
+    "typescript": "^4.5.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\""
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^17.0.0",
+    "concurrently": "^6.4.0",
+    "nodemon": "^2.0.15"
+  }
+}
