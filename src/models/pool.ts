@@ -18,6 +18,10 @@ const poolSchema: Schema = new Schema(
         type: String,
         required: true,
     },
+    exitTokenId: {
+      type: String,
+      required: true,
+  },
     id: {
         type: Number,
         required: true,

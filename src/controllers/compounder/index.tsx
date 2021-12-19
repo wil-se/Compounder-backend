@@ -15,7 +15,7 @@ const getCompounders = async (req: Request, res: Response): Promise<void> => {
 const addCompounder = async (req: Request, res: Response): Promise<void> => {
   try {
     const body = req.body as Pick<ICompounder, 
-    "poolID" |
+    "poolId" |
     "poolNumber" |
     "logoUrl" |
     "name" |
@@ -32,7 +32,7 @@ const addCompounder = async (req: Request, res: Response): Promise<void> => {
     "stdGas" >;
     
     const compounder: ICompounder = new Compounder({
-      poolID: body.poolID, 
+      poolId: body.poolId, 
       poolNumber:body.poolNumber,
       logoUrl:body.logoUrl,
       name:body.name,

@@ -19,7 +19,6 @@ const addNetwork = async (req: Request, res: Response): Promise<void> => {
         "name" |
         "wss" |
         "rpc" |
-        "knownAddresses" |
         "logoUrl"
     >;
        
@@ -28,8 +27,7 @@ const addNetwork = async (req: Request, res: Response): Promise<void> => {
         "name": body.name,
         "wss": body.wss,
         "rpc": body.rpc,
-        "knownAddresses": body.knownAddresses,
-        "logoUrl": body.logoUrl,
+        "logoUrl": body.logoUrl == "" ? "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@d5c68edec1f5eaec59ac77ff2b48144679cebca1/svg/color/generic.svg": body.logoUrl,
     });
 
     const newNetwork: INetwork = await network.save();

@@ -20,7 +20,6 @@ const compounderSchema: Schema = new Schema(
     },
     name: {
         type: String,
-        required: true,
     },
     tick: {
         type: Number,

@@ -5,6 +5,5 @@ export interface INetwork extends Document {
     name: string;
     wss: Array<string>;
     rpc: Array<string>;
-    knownAddresses: Map<string, string>;
     logoUrl: string;
 }

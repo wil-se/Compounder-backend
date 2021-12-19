@@ -27,7 +27,7 @@ const addRouter = async (req: Request, res: Response): Promise<void> => {
         abi: body.abi,
         networkId: body.networkId,
         name: body.name,
-        logoUrl: body.logoUrl,
+        logoUrl: body.logoUrl == "" ? "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@d5c68edec1f5eaec59ac77ff2b48144679cebca1/svg/color/generic.svg": body.logoUrl,
     });
 
     const newRouter: IRouter = await router.save();

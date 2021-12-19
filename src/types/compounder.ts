@@ -1,7 +1,7 @@
 import { Document } from "mongoose";
 
 export interface ICompounder extends Document {
-    poolID: string;
+    poolId: string;
     poolNumber: number;
     logoUrl: string;
     name: string;

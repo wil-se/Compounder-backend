@@ -31,7 +31,7 @@ const addPool = async (req: Request, res: Response): Promise<void> => {
         "stakeTokenId": body.stakeTokenId,
         "exitTokenId": body.exitTokenId,
         "id": body.id,
-        "logoUrl": body.logoUrl,
+        "logoUrl": body.logoUrl == "" ? "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@d5c68edec1f5eaec59ac77ff2b48144679cebca1/svg/color/generic.svg": body.logoUrl,
     });
 
     const newPool: IPool = await pool.save();

@@ -17,27 +17,21 @@ const addFarm = async (req: Request, res: Response): Promise<void> => {
     const body = req.body as Pick<IFarm, 
         "name" |
         "routerId" |
-        "pid" |
         "pendingFName" |
         "hasReferral" |
         "masterchefAddress" |
         "masterchefAbi" |
-        "stakeTokenId" |
-        "rewardTokenId" |
         "logoUrl"
     >;
        
     const farm: IFarm = new Farm({
         name: body.name,
-        routerID: body.routerId,
-        pid: body.pid,
+        routerId: body.routerId,
         pendingFName: body.pendingFName,
         hasReferral: body.hasReferral,
         masterchefAddress: body.masterchefAddress,
         masterchefAbi: body.masterchefAbi,
-        stakeTokenId: body.stakeTokenId,
-        rewardTokenId: body.rewardTokenId,
-        logoUrl: body.logoUrl,
+        logoUrl: body.logoUrl == "" ? "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@d5c68edec1f5eaec59ac77ff2b48144679cebca1/svg/color/generic.svg": body.logoUrl,
     });
 
     const newFarm: IFarm = await farm.save();

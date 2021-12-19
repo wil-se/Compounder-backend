@@ -13,7 +13,7 @@ const tokenSchema: Schema = new Schema(
       required: true,
     },
     networkId: {
-      type: [],
+      type: String,
       required: true,
     },
     name: {
