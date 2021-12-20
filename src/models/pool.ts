@@ -7,21 +7,25 @@ const poolSchema: Schema = new Schema(
       type: String,
     },
     farmId: {
-        type: String,
-        required: true,
+      type: Schema.Types.ObjectId,
+      ref: 'Farm',
+      required: true,
     },
     stakeTokenId: {
-        type: String,
-        required: true,
+      type: Schema.Types.ObjectId,
+      ref: 'Token',
+      required: true,
     },
     rewardTokenId: {
-        type: String,
-        required: true,
+      type: Schema.Types.ObjectId,
+      ref: 'Token',
+      required: true,
     },
     exitTokenId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'Token',
       required: true,
-  },
+    },
     id: {
         type: Number,
         required: true,

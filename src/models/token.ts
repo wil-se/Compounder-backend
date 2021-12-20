@@ -13,7 +13,8 @@ const tokenSchema: Schema = new Schema(
       required: true,
     },
     networkId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'Network',
       required: true,
     },
     name: {

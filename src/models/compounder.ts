@@ -4,9 +4,9 @@ import { model, Schema } from "mongoose";
 const compounderSchema: Schema = new Schema(
   {
     poolId: {
-      type: String,
-      required: true,
-      default: -1,
+        type: Schema.Types.ObjectId,
+        ref: 'Pool',
+        required: true,
     },
     poolNumber: {
       type: Number,

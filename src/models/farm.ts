@@ -8,9 +8,9 @@ const farmSchema: Schema = new Schema(
         required: true,
     },
     routerId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'Router',
       required: true,
-      default: -1,
     },
     pendingFName: {
         type: String,
