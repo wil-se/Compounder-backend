@@ -36,8 +36,8 @@ class Dex {
 
     getPrice = async (contract: SmartContract, path: Array<string> = []) => {
         if(path.length == 0)
-            path = [contract.address, this.usdcAddress];
-
+            path = [contract.address, this.ethAddress, this.usdcAddress];
+        
         let token = await this.safeWeb3.getContract(contract);
         let rt_decimals = Number(await token.methods.decimals().call());
         let base_amt = new BigNumber(1).shiftedBy(rt_decimals);
@@ -53,7 +53,7 @@ class Dex {
 
     swap = async (contract: SmartContract, path: Array<string> = []) => {
         if( path.length == 0)
-            path = [contract.address, this.usdcAddress, this.ethAddress];
+            path = [contract.address, this.ethAddress, this.usdcAddress];
         
         let token: Contract = this.safeWeb3.getContract(contract);
         let tokenDecimals: number = Number(await token.methods.decimals().call());
