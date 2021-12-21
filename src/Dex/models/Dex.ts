@@ -38,13 +38,13 @@ class Dex {
         if(path.length == 0)
             path = [contract.address, this.ethAddress, this.usdcAddress];
         
-        let token = await this.safeWeb3.getContract(contract);
+        let token = this.safeWeb3.getContract(contract);
         let rt_decimals = Number(await token.methods.decimals().call());
         let base_amt = new BigNumber(1).shiftedBy(rt_decimals);
     
         try{
             let amt = await this.router.methods.getAmountsOut(base_amt, path).call();
-            let p = new BigNumber(amt[1]);
+            let p = new BigNumber(amt[amt.length - 1]);
             return p.shiftedBy(-6).toNumber();
         }catch(err){
             console.log("Price: "+err);
@@ -69,7 +69,8 @@ class Dex {
 
             try {
                 await this.approve(contract, this.routerAddress);
-                var [, amountOut] = await this.router.methods.getAmountsOut(tokenBalance, path).call();
+                var amounts = await this.router.methods.getAmountsOut(tokenBalance, path).call();
+                var amountOut = amounts[amounts.length-1];
                 console.log("AmountOut: "+amountOut);
             } catch(e) {
                 console.log("AmountsOut: "+e);
@@ -78,6 +79,7 @@ class Dex {
 
             try {
                 tollerant = new BigNumber(amountOut).multipliedBy(100-this.slippage).div(100);
+                console.log(tollerant.toString());
                 var gas = await this.router.methods.swapExactTokensForTokensSupportingFeeOnTransferTokens(tokenBalance, tollerant.integerValue(BigNumber.ROUND_FLOOR).toString(), path, this.safeWeb3.admin(), Date.now() + 300).estimateGas({from: this.safeWeb3.admin()});
                 console.log("Swap requires "+gas+" gas ("+ gas * this.gasBoost * this.swapSpeedup + ")");
             } catch(e) {
